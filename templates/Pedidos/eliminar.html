@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>eliminar pedido</title>
+</head>
+<body>
+    <h3>¿Seguro que deseas eliminar este pedido?</h3>
+    <form action="" method="POST">
+        <label>Nombre:</label>
+        <input type="text" value="{{ pedido.1 }}" disabled>
+        
+        <label>Stock:</label>
+        <input type="number" value="{{ pedido.2 }}" disabled>
+        
+        <label>NombreCaja:</label>
+        <input type="text" value="{{ pedido.3 }}" disabled>
+        
+        <label>Teléfono:</label>
+        <input type="text" value="{{ pedido.4 }}" disabled>
+        
+        <label>Dirección:</label>
+        <textarea rows="4" cols="50" disabled>{{ pedido.5 }}</textarea>
+        
+        <input type="submit" value="eliminar pedido">
+        <a href="/pedidos/">Volver</a>
+    </form>
+</body>
+</html>
+

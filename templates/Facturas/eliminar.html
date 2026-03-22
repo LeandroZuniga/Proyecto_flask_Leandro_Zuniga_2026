@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Factura</title>
+</head>
+<body>
+    <h3>¿Seguro que deseas eliminar esta factura?</h3>
+    <form action="/facturas/eliminar/{{ factura.0 }}" method="POST">
+        <label>Código del Pedido:</label>
+        <input type="number" value="{{ factura.1 }}" disabled>
+        
+        <label>Fecha:</label>
+        <input type="date" value="{{ factura.2 }}" disabled>
+        
+        <label>Total:</label>
+        <input type="number" value="{{ factura.3 }}" disabled>
+        
+        <label>Método de Pago:</label>
+        <input type="text" value="{{ factura.4 }}" disabled>
+        
+        <label>Estado:</label>
+        <input type="text" value="{{ factura.5 }}" disabled>
+        
+        <input type="submit" value="Eliminar Factura">
+        <a href="/facturas/">Volver</a>
+    </form>
+</body>
+</html>
+

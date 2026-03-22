@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>agregar Factura</title>
+</head>
+<body>
+    <h3>Nueva Factura</h3>
+    <form action="/facturas/agregar" method="post">
+        <label for="CodigoPedido">Codigo del Pedido:</label>
+        <input type="number" id="CodigoPedido" name="CodigoPedido" required>
+
+        <label for="Fecha">Fecha:</label>
+        <input type="date" id="Fecha" name="Fecha" required>
+
+        <label for="Total">Total:</label>
+        <input type="number" id="Total" name="Total" step="0.01" required>
+
+        <label for="MetodoPago">Método de Pago:</label>
+        <input type="text" id="MetodoPago" name="MetodoPago" required>
+
+        <label for="Estado">Estado:</label>
+        <input type="text" id="Estado" name="Estado" required>
+
+        <input type="submit" value="Agregar Factura">
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>editar Factura</title>
+</head>
+<body>
+    <h3>editar Factura</h3>
+    <form action="/facturas/editar/{{ factura.0 }}" method="POST">
+        <label>Código Pedido:</label>
+        <input type="number" name="CodigoPedido" value="{{ factura.1 }}" required>
+
+        <label>Fecha:</label>
+        <input type="date" name="Fecha" value="{{ factura.2 }}" required>
+
+        <label>Total:</label>
+        <input type="number" step="0.01" name="Total" value="{{ factura.3 }}" required>
+
+        <label>Método de Pago:</label>
+        <input type="text" name="MetodoPago" value="{{ factura.4 }}" required>
+
+        <label>Estado:</label>
+        <input type="text" name="Estado" value="{{ factura.5 }}" required>
+
+        <input type="submit" value="Guardar Cambios">
+        <a href="/facturas/">Volver</a>
+    </form>
+</body>
+</html>
+

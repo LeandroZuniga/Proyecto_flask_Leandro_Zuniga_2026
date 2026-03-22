@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Facturas</title>
+</head>
+<body>
+    <h3>Listado de Facturas</h3>
+    <div>
+        <a href="/facturas/agregar">Nueva Factura</a>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Acciones</th>
+                <th>Factura ID</th>
+                <th>Código Pedido</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Método de Pago</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for factura in lista_facturas %}
+                <tr>
+                    <td>
+                        <a href="/facturas/editar/{{ factura.0 }}">Editar</a>
+                        <a href="/facturas/eliminar/{{ factura.0 }}">Eliminar</a>
+                    </td>
+                    <td>{{ factura.0 }}</td>
+                    <td>{{ factura.1 }}</td>
+                    <td>{{ factura.2 }}</td>
+                    <td>{{ factura.3 }}</td>
+                    <td>{{ factura.4 }}</td>
+                    <td>{{ factura.5 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

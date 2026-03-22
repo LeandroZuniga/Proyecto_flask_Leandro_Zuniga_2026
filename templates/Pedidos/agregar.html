@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar pedido</title>
+</head>
+<body>
+    <h3>Agregar pedido</h3>
+    <form action="" method="POST">
+        <label>Nombre:</label>
+        <input type="text" name="Nombre" required maxlength="100">
+        
+        <label>Stock:</label>
+        <input type="number" name="Stock" required min="1">
+        
+        <label>NombreCaja:</label>
+        <input type="text" name="NombreCaja" required maxlength="100">
+        
+        <label>Teléfono:</label>
+        <input type="text" name="Telefono" required maxlength="50">
+        
+        <label>Dirección:</label>
+        <textarea name="Direccion" rows="4" cols="50" required></textarea>
+        
+        <input type="submit" value="Agregar pedido">
+        <a href="/pedidos/">Volver</a>
+    </form>
+</body>
+</html>

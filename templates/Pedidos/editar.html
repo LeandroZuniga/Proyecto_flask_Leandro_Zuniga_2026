@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar pedido</title>
+</head>
+<body>
+    <h3>Editar pedido</h3>
+    <form action="" method="POST">
+        <label>Nombre:</label>
+        <input type="text" name="Nombre" required maxlength="100" value="{{ pedido[1] }}">
+        
+        <label>Stock:</label>
+        <input type="number" name="Stock" required min="1" value="{{ pedido[2] }}">
+        
+        <label>NombreCaja:</label>
+        <input type="text" name="NombreCaja" required maxlength="100" value="{{ pedido[3] }}">
+        
+        <label>Teléfono:</label>
+        <input type="text" name="Telefono" required maxlength="50" value="{{ pedido[4] }}">
+        
+        <label>Dirección:</label>
+        <textarea name="Direccion" rows="4" cols="50" required>{{ pedido[5] }}</textarea>
+        
+        <input type="submit" value="Editar pedido">
+        <a href="/pedidos/">Volver</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de pedidos</title>
+</head>
+<body>
+    <h3>Listado de pedidos</h3>
+    <div>
+        <a href="/pedidos/agregar">Nuevo pedido</a>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Acciones</th>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Stock</th>
+                <th>NombreCaja</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pedido in lista_pedidos %}
+                <tr>
+                    <td>
+                        <a href="/pedidos/editar/{{ pedido[0] }}">Editar</a>
+                        <a href="/pedidos/eliminar/{{ pedido[0] }}">Eliminar</a>
+                    </td>
+                    <td>{{ pedido.0 }}</td>
+                    <td>{{ pedido.1 }}</td>
+                    <td>{{ pedido.2 }}</td>
+                    <td>{{ pedido.3 }}</td>
+                    <td>{{ pedido.4 }}</td>
+                    <td>{{ pedido.5 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
