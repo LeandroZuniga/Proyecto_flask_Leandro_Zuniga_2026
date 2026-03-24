@@ -10,8 +10,13 @@ conn = mysql.connector.connect(
     ssl_disabled=True
 )
 
-@app.route("/pedidos/")
+@app.route("/")
 def index():
+    return render_template('index.html')
+
+    
+@app.route("/pedidos/")
+def pedidos_index():
     cur = conn.cursor()
     cur.execute("SELECT * FROM pedidos")
     datos = cur.fetchall()
