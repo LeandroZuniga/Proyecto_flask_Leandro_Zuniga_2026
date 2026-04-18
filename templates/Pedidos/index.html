@@ -1,43 +1,78 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de pedidos</title>
-</head>
-<body>
-    <h3>Listado de pedidos</h3>
-    <div>
-        <a href="/pedidos/agregar">Nuevo pedido</a>
+{% extends 'base.html' %}
+{% block titulo %}Listado de pedidos{% endblock %}
+{% block contenido %}
+<div class="container mt-5">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold">
+            <i class="bi bi-box-seam-fill text-primary"></i> Listado de Pedidos
+        </h3>
+        <a href="/pedidos/agregar" class="btn btn-primary">
+            <i class="bi bi-plus-circle-fill"></i> Nuevo Pedido
+        </a>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Acciones</th>
-                <th>Código</th>
-                <th>Nombre</th>
-                <th>Stock</th>
-                <th>NombreCaja</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for pedido in lista_pedidos %}
-                <tr>
-                    <td>
-                        <a href="/pedidos/editar/{{ pedido[0] }}">Editar</a>
-                        <a href="/pedidos/eliminar/{{ pedido[0] }}">Eliminar</a>
-                    </td>
-                    <td>{{ pedido.0 }}</td>
-                    <td>{{ pedido.1 }}</td>
-                    <td>{{ pedido.2 }}</td>
-                    <td>{{ pedido.3 }}</td>
-                    <td>{{ pedido.4 }}</td>
-                    <td>{{ pedido.5 }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+    <!-- Card -->
+    <div class="card shadow-lg rounded-3">
+        <div class="card-body">
+            <table id="pedidos" class="table table-hover table-bordered align-middle">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Acciones</th>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Stock</th>
+                        <th>Nombre Caja</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pedido in lista_pedidos %}
+                    <tr>
+                        <td class="text-center">
+                            <a href="/pedidos/editar/{{ pedido[0] }}" class="btn btn-sm btn-warning me-1">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a href="/pedidos/eliminar/{{ pedido[0] }}" class="btn btn-sm btn-danger"
+                               onclick="return confirm('¿Seguro que deseas eliminar este pedido?')">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                        <td>{{ pedido.0 }}</td>
+                        <td>{{ pedido.1 }}</td>
+                        <td>{{ pedido.2 }}</td>
+                        <td>{{ pedido.3 }}</td>
+                        <td>{{ pedido.4 }}</td>
+                        <td>{{ pedido.5 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    new DataTable('#pedidos', {
+        language: {
+            decimal: "",
+            emptyTable: "No hay datos disponibles",
+            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+            infoEmpty: "Mostrando 0 a 0 de 0 registros",
+            infoFiltered: "(filtrado de _MAX_ registros totales)",
+            lengthMenu: "Mostrar _MENU_ registros",
+            loadingRecords: "Cargando...",
+            processing: "Procesando...",
+            search: "Buscar:",
+            zeroRecords: "No se encontraron resultados",
+            paginate: {
+                first: "Primero",
+                last: "Último",
+                next: "Siguiente",
+                previous: "Anterior"
+            }
+        }
+    });
+</script>
+{% endblock %}

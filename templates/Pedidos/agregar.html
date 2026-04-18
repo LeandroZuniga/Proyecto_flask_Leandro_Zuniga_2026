@@ -1,29 +1,43 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Agregar pedido</title>
-</head>
-<body>
-    <h3>Agregar pedido</h3>
-    <form action="" method="POST">
-        <label>Nombre:</label>
-        <input type="text" name="Nombre" required maxlength="100">
-        
-        <label>Stock:</label>
-        <input type="number" name="Stock" required min="1">
-        
-        <label>NombreCaja:</label>
-        <input type="text" name="NombreCaja" required maxlength="100">
-        
-        <label>Teléfono:</label>
-        <input type="text" name="Telefono" required maxlength="50">
-        
-        <label>Dirección:</label>
-        <textarea name="Direccion" rows="4" cols="50" required></textarea>
-        
-        <input type="submit" value="Agregar pedido">
-        <a href="/pedidos/">Volver</a>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block titulo %}Agregar nuevo pedido{% endblock %}
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded-3">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Agregar Nuevo Pedido</h4>
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" name="Nombre" required maxlength="100">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Stock</label>
+                            <input type="number" class="form-control" name="Stock" required min="1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre Caja</label>
+                            <input type="text" class="form-control" name="NombreCaja" required maxlength="100">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" name="Telefono" required maxlength="50">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Dirección</label>
+                            <textarea class="form-control" name="Direccion" rows="3" required></textarea>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <a href="/pedidos/" class="btn btn-secondary">Volver</a>
+                            <button type="submit" class="btn btn-primary">Agregar Pedido</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

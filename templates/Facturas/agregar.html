@@ -1,28 +1,43 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>agregar Factura</title>
-</head>
-<body>
-    <h3>Nueva Factura</h3>
-    <form action="/facturas/agregar" method="post">
-        <label for="CodigoPedido">Codigo del Pedido:</label>
-        <input type="number" id="CodigoPedido" name="CodigoPedido" required>
-
-        <label for="Fecha">Fecha:</label>
-        <input type="date" id="Fecha" name="Fecha" required>
-
-        <label for="Total">Total:</label>
-        <input type="number" id="Total" name="Total" step="0.01" required>
-
-        <label for="MetodoPago">Método de Pago:</label>
-        <input type="text" id="MetodoPago" name="MetodoPago" required>
-
-        <label for="Estado">Estado:</label>
-        <input type="text" id="Estado" name="Estado" required>
-
-        <input type="submit" value="Agregar Factura">
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block titulo %}Agregar nueva factura{% endblock %}
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded-3">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Nueva Factura</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/facturas/agregar" method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Código del Pedido</label>
+                            <input type="number" class="form-control" name="CodigoPedido" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" class="form-control" name="Fecha" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Total</label>
+                            <input type="number" class="form-control" name="Total" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Método de Pago</label>
+                            <input type="text" class="form-control" name="MetodoPago" required maxlength="100">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Estado</label>
+                            <input type="text" class="form-control" name="Estado" required maxlength="100">
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <a href="/facturas/" class="btn btn-secondary">Volver</a>
+                            <button type="submit" class="btn btn-primary">Agregar Factura</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

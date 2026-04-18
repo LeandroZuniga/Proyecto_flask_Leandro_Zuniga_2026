@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block titulo %}Mi App{% endblock %}</title>
+ 
+    <!-- CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/2.3.7/css/dataTables.bootstrap5.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+ 
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f8f9fc;
+        }
+ 
+        /* ── Sidebar ── */
+        #sidebar {
+            min-width: 240px;
+            max-width: 240px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #4e73df 0%, #224abe 100%);
+            transition: all 0.3s;
+        }
+ 
+        #sidebar .sidebar-brand {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.05rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+ 
+        #sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+ 
+        #sidebar .nav-link:hover {
+            color: #fff;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 6px;
+        }
+ 
+        #sidebar .nav-link i {
+            margin-right: 0.5rem;
+            width: 20px;
+            text-align: center;
+        }
+ 
+        #sidebar .sidebar-heading {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+        }
+ 
+        #sidebar hr {
+            border-color: rgba(255,255,255,0.15);
+            margin: 0.5rem 1rem;
+        }
+ 
+        #sidebar .collapse-item {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #3a3b45;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+ 
+        #sidebar .collapse-item:hover {
+            background-color: #eaecf4;
+            color: #4e73df;
+        }
+ 
+        /* ── Wrapper ── */
+        #wrapper {
+            display: flex;
+            width: 100%;
+        }
+ 
+        #content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+ 
+        /* ── Topbar ── */
+        #topbar {
+            height: 64px;
+            background: #fff;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58,59,69,.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+ 
+        #topbar .topbar-brand {
+            font-weight: 700;
+            color: #5a5c69;
+            font-size: 1rem;
+        }
+ 
+        /* ── Footer ── */
+        footer {
+            background: #fff;
+            border-top: 1px solid #e3e6f0;
+            padding: 1rem;
+            text-align: center;
+            color: #858796;
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+ 
+        /* ── Sidebar collapsed on mobile ── */
+        @media (max-width: 768px) {
+            #sidebar {
+                min-width: 0;
+                max-width: 0;
+                overflow: hidden;
+            }
+            #sidebar.active {
+                min-width: 240px;
+                max-width: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+ 
+<div id="wrapper">
+ 
+    <!-- ══════════ SIDEBAR ══════════ -->
+    <div id="sidebar">
+ 
+        <!-- Brand -->
+        <a class="sidebar-brand" href="/">
+            <i class="bi bi-file-earmark-text-fill me-2"></i>
+            Facturación
+        </a>
+ 
+        <!-- Inicio -->
+        <ul class="nav flex-column mt-2 px-2">
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="bi bi-speedometer2"></i> Inicio
+                </a>
+            </li>
+        </ul>
+ 
+        <hr>
+        <div class="sidebar-heading">Gestión</div>
+ 
+        <!-- Mantenimiento -->
+        <ul class="nav flex-column px-2">
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#collapseMantenimiento"
+                   role="button" aria-expanded="false" aria-controls="collapseMantenimiento">
+                    <i class="bi bi-gear-fill"></i> Mantenimiento
+                    <i class="bi bi-chevron-down float-end mt-1" style="font-size:0.7rem;"></i>
+                </a>
+                <div class="collapse" id="collapseMantenimiento">
+                    <div class="bg-white rounded p-2 mt-1">
+                        <small class="text-muted d-block mb-1 px-2">Módulos</small>
+                        <a class="collapse-item" href="/pedidos/">
+                            <i class="bi bi-box-seam text-primary"></i> Pedidos
+                        </a>
+                        <a class="collapse-item" href="/facturas/">
+                            <i class="bi bi-receipt-cutoff text-success"></i> Facturas
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+ 
+        <hr>
+ 
+    </div>
+    <!-- ══════════ END SIDEBAR ══════════ -->
+ 
+ 
+    <!-- ══════════ CONTENT WRAPPER ══════════ -->
+    <div id="content-wrapper">
+ 
+        <!-- ── Topbar ── -->
+        <div id="topbar">
+            <!-- Toggle (mobile) -->
+            <button class="btn btn-link text-secondary d-md-none" id="sidebarToggleBtn">
+                <i class="bi bi-list fs-4"></i>
+            </button>
+            <span class="topbar-brand d-none d-md-inline">
+                <i class="bi bi-file-earmark-text text-primary"></i> Sistema de Facturación
+            </span>
+ 
+            <!-- Topbar Right -->
+            <div class="d-flex align-items-center gap-3">
+ 
+                <!-- Alertas -->
+                <div class="dropdown">
+                    <a href="#" class="text-secondary position-relative" data-bs-toggle="dropdown">
+                        <i class="bi bi-bell-fill fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.6rem;">
+                            3
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" style="min-width:300px;">
+                        <li><h6 class="dropdown-header">Centro de Alertas</h6></li>
+                        <li>
+                            <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;">
+                                    <i class="bi bi-file-text text-white"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold small">Nuevo pedido registrado.</div>
+                                    <div class="text-muted" style="font-size:0.75rem;">Hoy</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
+                                <div class="bg-success rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;">
+                                    <i class="bi bi-receipt text-white"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold small">Factura #0023 generada.</div>
+                                    <div class="text-muted" style="font-size:0.75rem;">Ayer</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
+                                <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;">
+                                    <i class="bi bi-exclamation-triangle text-white"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold small">Pedidos pendientes de facturar.</div>
+                                    <div class="text-muted" style="font-size:0.75rem;">Hace 2 días</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-center small text-muted" href="#">Ver todas las alertas</a></li>
+                    </ul>
+                </div>
+ 
+                <!-- Mensajes -->
+                <div class="dropdown">
+                    <a href="#" class="text-secondary position-relative" data-bs-toggle="dropdown">
+                        <i class="bi bi-envelope-fill fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.6rem;">
+                            3
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" style="min-width:300px;">
+                        <li><h6 class="dropdown-header">Centro de Mensajes</h6></li>
+                        <li>
+                            <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
+                                <img src="https://ui-avatars.com/api/?name=Cliente+1&background=4e73df&color=fff"
+                                     class="rounded-circle" width="36" height="36" alt="">
+                                <div>
+                                    <div class="fw-bold small text-truncate" style="max-width:200px;">¿Cuándo estará listo mi pedido?</div>
+                                    <div class="text-muted" style="font-size:0.75rem;">Cliente 1 · 30m</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
+                                <img src="https://ui-avatars.com/api/?name=Cliente+2&background=1cc88a&color=fff"
+                                     class="rounded-circle" width="36" height="36" alt="">
+                                <div>
+                                    <div class="fw-bold small text-truncate" style="max-width:200px;">Necesito copia de mi factura.</div>
+                                    <div class="text-muted" style="font-size:0.75rem;">Cliente 2 · 1d</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
+                                <img src="https://ui-avatars.com/api/?name=Cliente+3&background=f6c23e&color=fff"
+                                     class="rounded-circle" width="36" height="36" alt="">
+                                <div>
+                                    <div class="fw-bold small text-truncate" style="max-width:200px;">Estado de pedido #0045.</div>
+                                    <div class="text-muted" style="font-size:0.75rem;">Cliente 3 · 2d</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-center small text-muted" href="#">Leer más mensajes</a></li>
+                    </ul>
+                </div>
+ 
+                <!-- Divider -->
+                <div class="vr" style="height:30px;"></div>
+ 
+                <!-- Usuario -->
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center gap-2 text-decoration-none text-secondary"
+                       data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=4e73df&color=fff"
+                             class="rounded-circle" width="36" height="36" alt="Admin">
+                        <span class="d-none d-lg-inline small fw-semibold">Administrador</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-person me-2 text-secondary"></i> Perfil
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-gear me-2 text-secondary"></i> Configuración
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-journal-text me-2 text-secondary"></i> Registro de Actividad
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                <i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+ 
+            </div>
+        </div>
+        <!-- ── End Topbar ── -->
+ 
+        <!-- ── Page Content ── -->
+        <div class="p-4 flex-grow-1">
+            {% block contenido %}
+            {% endblock %}
+        </div>
+ 
+        <!-- ── Footer ── -->
+        <footer>
+            Copyright &copy; Facturación 2026
+        </footer>
+ 
+    </div>
+    <!-- ══════════ END CONTENT WRAPPER ══════════ -->
+ 
+</div>
+ 
+<!-- Logout Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">¿Cerrar Sesión?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Selecciona "Salir" si deseas terminar tu sesión actual.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a class="btn btn-primary" href="/">Salir</a>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.3.7/js/dataTables.bootstrap5.js"></script>
+ 
+<script>
+    // Toggle sidebar en mobile
+    document.getElementById('sidebarToggleBtn').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('active');
+    });
+</script>
+ 
+{% block scripts %}
+{% endblock %}
+ 
+</body>
+</html>
