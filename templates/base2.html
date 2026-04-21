@@ -90,7 +90,7 @@
             color: #4e73df;
         }
  
-        /* ── Wrapper ── */
+     
         #wrapper {
             display: flex;
             width: 100%;
@@ -103,7 +103,7 @@
             overflow-x: hidden;
         }
  
-        /* ── Topbar ── */
+       
         #topbar {
             height: 64px;
             background: #fff;
@@ -123,7 +123,7 @@
             font-size: 1rem;
         }
  
-        /* ── Footer ── */
+        
         footer {
             background: #fff;
             border-top: 1px solid #e3e6f0;
@@ -134,7 +134,7 @@
             margin-top: auto;
         }
  
-        /* ── Sidebar collapsed on mobile ── */
+      
         @media (max-width: 768px) {
             #sidebar {
                 min-width: 0;
@@ -152,7 +152,7 @@
  
 <div id="wrapper">
  
-    <!-- ══════════ SIDEBAR ══════════ -->
+    
     <div id="sidebar">
  
         <!-- Brand -->
@@ -161,7 +161,7 @@
             Facturación
         </a>
  
-        <!-- Inicio -->
+        
         <ul class="nav flex-column mt-2 px-2">
             <li class="nav-item">
                 <a class="nav-link" href="/">
@@ -173,7 +173,7 @@
         <hr>
         <div class="sidebar-heading">Gestión</div>
  
-        <!-- Mantenimiento -->
+        
         <ul class="nav flex-column px-2">
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#collapseMantenimiento"
@@ -198,15 +198,12 @@
         <hr>
  
     </div>
-    <!-- ══════════ END SIDEBAR ══════════ -->
- 
- 
-    <!-- ══════════ CONTENT WRAPPER ══════════ -->
+    
     <div id="content-wrapper">
  
-        <!-- ── Topbar ── -->
+        
         <div id="topbar">
-            <!-- Toggle (mobile) -->
+           
             <button class="btn btn-link text-secondary d-md-none" id="sidebarToggleBtn">
                 <i class="bi bi-list fs-4"></i>
             </button>
@@ -214,10 +211,10 @@
                 <i class="bi bi-file-earmark-text text-primary"></i> Sistema de Facturación
             </span>
  
-            <!-- Topbar Right -->
+            
             <div class="d-flex align-items-center gap-3">
  
-                <!-- Alertas -->
+                
                 <div class="dropdown">
                     <a href="#" class="text-secondary position-relative" data-bs-toggle="dropdown">
                         <i class="bi bi-bell-fill fs-5"></i>
@@ -265,7 +262,7 @@
                     </ul>
                 </div>
  
-                <!-- Mensajes -->
+                
                 <div class="dropdown">
                     <a href="#" class="text-secondary position-relative" data-bs-toggle="dropdown">
                         <i class="bi bi-envelope-fill fs-5"></i>
@@ -310,10 +307,10 @@
                     </ul>
                 </div>
  
-                <!-- Divider -->
+               
                 <div class="vr" style="height:30px;"></div>
  
-                <!-- Usuario -->
+               
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center gap-2 text-decoration-none text-secondary"
                        data-bs-toggle="dropdown">
@@ -348,25 +345,23 @@
  
             </div>
         </div>
-        <!-- ── End Topbar ── -->
- 
-        <!-- ── Page Content ── -->
+      
         <div class="p-4 flex-grow-1">
             {% block contenido %}
             {% endblock %}
         </div>
  
-        <!-- ── Footer ── -->
+        
         <footer>
             Copyright &copy; Facturación 2026
         </footer>
  
     </div>
-    <!-- ══════════ END CONTENT WRAPPER ══════════ -->
+    
  
 </div>
  
-<!-- Logout Modal -->
+
 <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -385,14 +380,14 @@
     </div>
 </div>
  
-<!-- Scripts -->
+
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/2.3.7/js/dataTables.bootstrap5.js"></script>
  
 <script>
-    // Toggle sidebar en mobile
+    
     document.getElementById('sidebarToggleBtn').addEventListener('click', function () {
         document.getElementById('sidebar').classList.toggle('active');
     });
